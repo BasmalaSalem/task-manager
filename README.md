@@ -62,7 +62,9 @@ npm install
 
 # Create .env file
 
+```bash
 cp .env.example .env
+```
 
 # Configure .env with your MySQL credentials:
 
@@ -82,17 +84,23 @@ FLUSH PRIVILEGES;
 
 ### 3. Frontend Setup
 
+```bash
 cd ../client
 npm install
+```
 
 ### Running the Application
 
 # Backend:
 
+```bash
 cd server
 npm run dev
+```
 
 # Frontend:
 
+```bash
 cd client
 quasar dev
+```
