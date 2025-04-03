@@ -1,4 +1,3 @@
-// ./src/core/utils/swagger.ts
 import swaggerJsdoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
 import { Express } from "express";
@@ -32,7 +31,7 @@ const options: swaggerJsdoc.Options = {
       },
     ],
   },
-  apis: ["./src/modules/**/**/*.ts"], // Path to files containing Swagger annotations
+  apis: ["./src/modules/**/**/*.ts"],
 };
 
 const swaggerSpec = swaggerJsdoc(options);

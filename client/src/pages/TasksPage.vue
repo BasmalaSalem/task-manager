@@ -8,11 +8,6 @@
         </q-card-section>
 
         <q-separator />
-
-        <q-card-section>
-          <div class="text-h6">Your Tasks</div>
-          <task-list :tasks="taskStore.tasks" @delete="handleDeleteTask" @edit="handleEditTask" />
-        </q-card-section>
       </q-card>
     </div>
   </q-page>
@@ -36,10 +31,5 @@ const handleCreateTask = async (task: { title: string; description?: string }) =
 
 const handleDeleteTask = async (id: number) => {
   await taskStore.deleteTask(id);
-};
-
-const handleEditTask = (task: any) => {
-  console.log('Edit task:', task);
-  // Implement edit functionality
 };
 </script>

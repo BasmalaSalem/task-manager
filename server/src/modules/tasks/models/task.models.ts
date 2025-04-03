@@ -19,7 +19,6 @@ class Task
   public description?: string;
   public userId!: number;
 
-  // Timestamps
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
 }
