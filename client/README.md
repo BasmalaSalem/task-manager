@@ -1,4 +1,4 @@
-# Quasar App (quasar-project)
+# Quasar App (task-manager)
 
 A Quasar Project
 
