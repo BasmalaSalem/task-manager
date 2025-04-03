@@ -2,8 +2,6 @@
 
 A full-stack task management application with user authentication, built with Quasar (Vue.js) frontend and Node.js/Express backend.
 
-![Task Manager Screenshot](./screenshots/app-preview.png) <!-- Add actual screenshot later -->
-
 ## Features
 
 **Frontend:**
