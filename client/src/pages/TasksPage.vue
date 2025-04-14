@@ -5,6 +5,8 @@
         <q-card-section>
           <div class="text-h6">Create New Task</div>
           <task-form @submit="handleCreateTask" />
+
+          <TaskList :tasks="taskStore.tasks" @delete="handleDeleteTask" class="q-mt-md" />
         </q-card-section>
 
         <q-separator />

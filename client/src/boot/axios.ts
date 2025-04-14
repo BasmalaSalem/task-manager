@@ -1,5 +1,7 @@
 import { defineBoot } from '#q-app/wrappers';
 import axios, { type AxiosInstance } from 'axios';
+import { useUserStore } from 'src/stores/auth';
+import { useRouter } from 'vue-router';
 
 declare module 'vue' {
   interface ComponentCustomProperties {
@@ -14,9 +16,37 @@ declare module 'vue' {
 // good idea to move this instance creation inside of the
 // "export default () => {}" function below (which runs individually
 // for each client)
-const api = axios.create({ baseURL: 'https://api.example.com' });
-
+const api = axios.create({
+  baseURL: 'http://localhost:3000/api',
+  timeout: 5000,
+});
 export default defineBoot(({ app }) => {
+  // Attach request interceptor
+  api.interceptors.request.use((config) => {
+    const token = localStorage.getItem('jwt');
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  });
+
+  // Attach response interceptor
+  api.interceptors.response.use(
+    (response) => response,
+    (error) => {
+      if (error.response?.status === 401) {
+        const userStore = useUserStore();
+        const router = useRouter();
+
+        // Clear JWT and reset user state
+        userStore.logout();
+
+        // Redirect to login without full page reload
+        router.push('/auth');
+      }
+      return Promise.reject(error);
+    },
+  );
   // for use inside Vue files (Options API) through this.$axios and this.$api
 
   app.config.globalProperties.$axios = axios;

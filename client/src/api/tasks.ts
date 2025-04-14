@@ -1,4 +1,6 @@
-import api from './axios';
+// import api from './axios';
+
+import { api } from '../boot/axios';
 
 export default {
   getTasks: () => api.get('/tasks'),

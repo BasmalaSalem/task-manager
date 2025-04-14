@@ -1,9 +1,9 @@
 <template>
-  <q-form @submit.prevent="handleSubmit" class="q-gutter-md">
-    <q-input v-model="form.title" label="Title" :rules="[(val) => !!val || 'Title is required']" />
-    <q-input v-model="form.description" label="Description" type="textarea" />
-    <div class="row justify-end">
-      <q-btn label="Submit" type="submit" color="primary" />
+  <q-form @submit.prevent="handleSubmit">
+    <div class="row q-gutter-md">
+      <q-input v-model="form.title" label="Title" required />
+      <q-input v-model="form.description" label="Description" />
+      <q-btn type="submit" label="Add Task" color="primary" />
     </div>
   </q-form>
 </template>

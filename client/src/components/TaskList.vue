@@ -7,7 +7,6 @@
       </q-item-section>
       <q-item-section side top>
         <div class="row q-gutter-sm">
-          <q-btn icon="edit" flat round color="blue" @click="emit('edit', task)" />
           <q-btn icon="delete" flat round color="red" @click="emit('delete', task.id)" />
         </div>
       </q-item-section>
@@ -24,6 +23,5 @@ defineProps<{
 
 const emit = defineEmits<{
   (e: 'delete', id: number): void;
-  (e: 'edit', task: Task): void;
 }>();
 </script>

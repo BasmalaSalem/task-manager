@@ -43,12 +43,10 @@ const registerForm = ref({
 });
 
 const userStore = useUserStore();
-const router = useRouter();
 
 const handleLogin = async () => {
   try {
     await userStore.login(loginForm.value.email, loginForm.value.password);
-    router.push('/');
   } catch (error) {
     console.error('Login failed:', error);
   }
@@ -57,7 +55,6 @@ const handleLogin = async () => {
 const handleRegister = async () => {
   try {
     await userStore.register(registerForm.value.email, registerForm.value.password);
-    router.push('/');
   } catch (error) {
     console.error('Registration failed:', error);
   }

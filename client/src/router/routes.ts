@@ -1,4 +1,4 @@
-import { RouteRecordRaw } from 'vue-router';
+import { Router, RouteRecordRaw } from 'vue-router';
 import { useUserStore } from '../stores/auth';
 
 const routes: RouteRecordRaw[] = [
@@ -10,20 +10,20 @@ const routes: RouteRecordRaw[] = [
   },
   {
     path: '/auth',
-    component: () => import('layouts/AuthLayout.vue'),
+    component: () => import('layouts/MainLayout.vue'),
     meta: { requiresGuest: true },
     children: [{ path: '', component: () => import('pages/AuthPage.vue') }],
   },
   {
     path: '/:catchAll(.*)*',
-    component: () => import('pages/Error404.vue'),
+    component: () => import('pages/ErrorNotFound.vue'),
   },
 ];
 
 export default routes;
 
-export function createRouterGuards(router: any) {
-  router.beforeEach((to: any) => {
+export function createRouterGuards(router: Router) {
+  router.beforeEach((to) => {
     const userStore = useUserStore();
 
     if (to.meta.requiresAuth && !userStore.isAuthenticated()) {
